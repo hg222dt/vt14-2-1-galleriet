@@ -50,6 +50,7 @@ namespace Gallery
                 //Skriv ut felmeddelande
                 UploadMessDiv.Visible = true;
                 UploadMess.Text = "Uppladdning misslyckades!";
+                //testkommentar
             }
             else
             {
