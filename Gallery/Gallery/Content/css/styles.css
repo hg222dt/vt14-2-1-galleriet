@@ -4,6 +4,30 @@
 #UploadMessDiv {
     background-color: lightgray;
     width: 300px;
-    padding:20px;
-    margin: 100px;
+    height: 60px;
+    margin-top: 20px;
+    padding-top: 30px;
+}
+
+#UploadMess {
+    margin: 20px;
+}
+
+#LargeImgDiv {
+    width: 300px;
+    margin-top: 20px;
+    height: 200px;
+    border: 1px solid lightgray;
+}
+
+#thumbsDiv {
+    position: relative;
+    width: 300px;
+    margin-top: 20px;
+}
+
+#allElements {
+    margin-left: auto;
+    margin-right: auto;
+    width: 23%;
 }

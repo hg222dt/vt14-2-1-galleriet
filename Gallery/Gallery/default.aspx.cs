@@ -13,7 +13,6 @@ namespace Gallery
 {
     public partial class _default : System.Web.UI.Page
     {   
-
         private Model.ImageHandler _imageHandler;
 
         private Model.ImageHandler ImageHandler
