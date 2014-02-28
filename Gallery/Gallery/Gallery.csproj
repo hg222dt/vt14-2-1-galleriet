@@ -57,6 +57,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\css\styles.css" />
     <Content Include="Content\files\arrow.png" />
     <Content Include="Content\files\done.png" />
     <Content Include="Content\files\excl.gif" />

@@ -1,15 +1,4 @@
-﻿//using System;
-//using System.Collections.Generic;
-//using System.IO;
-//using System.Linq;
-//using System.Web;
-//using System.Web.UI;
-////using System.Drawing.Image;
-//using System.Web.UI.WebControls;
-//using System.Text.RegularExpressions;
-
-
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -45,16 +34,17 @@ namespace Gallery
                 LargeImage.ImageUrl = "~/Content/files/" + nameQuery;
             }
 
-            if(Request.QueryString["upload"] == "false")
+            if(Request.QueryString["uploaded"] == "false")
             {
                 //Skriv ut felmeddelande
                 UploadMessDiv.Visible = true;
                 UploadMess.Text = "Uppladdning misslyckades!";
-                //testkommentar
+                LargeImage.Visible = false;
             }
-            else
+            else if (Request.QueryString["uploaded"] == "true")
             {
                 //Skriv ut rättmeddelande
+                LargeImage.Visible = true;
                 UploadMessDiv.Visible = true;
                 UploadMess.Text = "Uppladdning lyckades!";
             }
