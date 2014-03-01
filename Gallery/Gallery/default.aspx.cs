@@ -56,30 +56,36 @@ namespace Gallery
 
         protected void UploadFile_Click(object sender, EventArgs e)
         {
-            if (FileUpload1.HasFile)
-            {
-                try
+            if (IsValid) 
+            { 
+                if (FileUpload1.HasFile)
                 {
-                    string fileName = Path.Combine(Server.MapPath("~/Content/files"), FileUpload1.FileName);
+                    try
+                    {
+                        string fileName = Path.Combine(Server.MapPath("~/Content/files"), FileUpload1.FileName);
 
-                    ImageHandler.SaveImage(FileUpload1.FileContent, FileUpload1.FileName);
+                        ImageHandler.SaveImage(FileUpload1.FileContent, FileUpload1.FileName);
 
-                    Response.Redirect("?img=" + FileUpload1.FileName + "&uploaded=true", false);
-
-                }
-                catch (Exception)
-                {
-                    Response.Redirect("?img=" + FileUpload1.FileName + "&uploaded=false", false);
+                        Response.Redirect("?img=" + FileUpload1.FileName + "&uploaded=true", false);
+                    }
+                    catch (Exception)
+                    {
+                        Response.Redirect("?img=" + FileUpload1.FileName + "&uploaded=false", false);
+                    }
                 }
             }
-
         }
 
-        protected void FileRepeater_ItemDataBound(object sendet, RepeaterItemEventArgs e)
+        protected void FileRepeater_ItemDataBound(object sender, RepeaterItemEventArgs e)
         {
-            var fileData = (FileData)e.Item.DataItem;
-
-
+            if (e.Item.ItemType == ListItemType.Item || e.Item.ItemType == ListItemType.AlternatingItem)
+            {
+                if (((FileData)e.Item.DataItem).Name == Request.QueryString["img"])
+                {
+                    var link = (HyperLink)e.Item.FindControl("FileHyperLink");
+                    link.CssClass = "activeLink";
+                }
+            }
         }
     }
 }

@@ -33,10 +33,12 @@
 }
 
 .activeLink {
-    border: solid 3px black;
-    height: 100px;
+    border-top: solid 3px black;
+    display: inline-block;
+    margin-top: 10px;
 }
 
 .Thumbnail {
-    
+    display: inline-block;
+    margin-top: 10px;
 }
