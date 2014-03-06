@@ -12,10 +12,13 @@ namespace Gallery.Model
 {
     public class ImageHandler: System.Web.UI.Page
     {
+        //Hanterar extentions
         private static Regex ApprovedExtentions;
 
+        //Hanterar sökväg till bilder
         private static string PhysicalUploadImagePath;
 
+        //hanterar sanerat sökväg
         private static Regex SantizePath;
 
         //Konstruktor
@@ -29,7 +32,7 @@ namespace Gallery.Model
             
         }
 
-
+        //Metod som returnerar filnamn på bilder i lista.
         public IEnumerable<FileData> GetImageNames()
         {
             var regex = new Regex("(.png|.jpg|.gif)", RegexOptions.IgnoreCase);
@@ -44,6 +47,7 @@ namespace Gallery.Model
                    }).OrderBy(fi => fi.Name).ToList();
         }
 
+        //Metod som returnerar cahad data. används inte.
         public IEnumerable<FileData> GetCachedImageNames()
         {
             var files = HttpContext.Current.Cache["files"] as IEnumerable<FileData>;
@@ -57,11 +61,13 @@ namespace Gallery.Model
             return files;
         }
 
+        //Metod som kontrollerar om fil existerar i filmapp
         public bool ImageExists(string name)
         {
             return File.Exists(Path.Combine(PhysicalUploadImagePath, name));
         }
 
+        //Metod som kontrollerar så att bild är i godkänt format.
         public bool IsValidImage(System.Drawing.Image img)
         {
             if (img.RawFormat.Guid == System.Drawing.Imaging.ImageFormat.Gif.Guid || img.RawFormat.Guid == System.Drawing.Imaging.ImageFormat.Png.Guid || img.RawFormat.Guid == System.Drawing.Imaging.ImageFormat.Jpeg.Guid)
@@ -72,6 +78,7 @@ namespace Gallery.Model
             return false;
         }
 
+        //Metod som sparar bild.
         public string SaveImage(Stream stream, string fileName)
         {
             var img = System.Drawing.Image.FromStream(stream);

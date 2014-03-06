@@ -23,10 +23,13 @@ namespace Gallery
             }
         }
 
+        //Metod som används när sidan laddas.
         protected void Page_Load(object sender, EventArgs e)
         {
+            //Antropar wuerysträngen i url:en
             var nameQuery = Request.QueryString["img"];
             
+            //Iterationer som utfaller beroende på vad som står i querysträngen.
             if(nameQuery != null)
             {
                 LargeImage.Visible = true;
@@ -49,11 +52,13 @@ namespace Gallery
             }
         }
 
+        //Metod som henterar filrepeatern och returnerar filnamn så att bilderna kan ritas upp.
         public IEnumerable<Model.FileData> Filerepeater_GetData()
         {
             return ImageHandler.GetImageNames();
         }
 
+        //Metod som hanterar uppladdning av biler.
         protected void UploadFile_Click(object sender, EventArgs e)
         {
             if (IsValid) 
@@ -76,6 +81,7 @@ namespace Gallery
             }
         }
 
+        //metod som hanterar vad som händer med varje databound i repeatern.
         protected void FileRepeater_ItemDataBound(object sender, RepeaterItemEventArgs e)
         {
             if (e.Item.ItemType == ListItemType.Item || e.Item.ItemType == ListItemType.AlternatingItem)
